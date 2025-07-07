@@ -1,0 +1,144 @@
+1) alice generates ssh public and private keys
+2) alice knows bob password and ssh into bob account
+3) use scp to transfer its own public key to bob's account for further passwordless login
+4) once the public key of alice has transfered his public key to bob he loggs out
+5) he then uses passwordless authentication to login to ssh 
+6) he then uses scp to transfer some files from alice to bob /home directory.
+
+
+commands: 
+<c> THE STUDENTS WILL PERFORM THESE ACTIONS AND WILL SAVE THE COMMANDS IN THE TEXT FILE, WHICH THE AUTOGRADER WILL READ AND PERFORM THESE SAME ACTIONS TO GET
+THE REQUIRED OUTPUT IF ANY OF THESE COMMANDS FAIL THE AUTOGRADER WILL ASSUME THE TESTCASE FAILED.
+
+The entrypoint.sh script should also start the sshd
+<c> The autograder should check if the user is performing this action logged in as alice" [run the command su - alice from the autograder]
+    ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ""
+<c> This operation prompt's bob's password
+    ssh bob@localhost       
+    exit
+<c> This operation needs to be performed on the alice side and the action prompts bob's password   
+    ssh-copy-id -i ~/.ssh/id_rsa.pub bob@localhost
+    ssh bob@localhost
+    exit
+    scp ~/somefile.txt bob@localhost:
+
+<c> Check if the file is present in bob's directory
+
+
+ 
+ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ""
+ssh-copy-id -i ~/.ssh/id_rsa.pub bob@localhost
+scp shared.txt bob@localhost:
+rsync -av ./big_folder/ bob@localhost:big_folder
+
+autograder will check 
+1) for public and private keys in alice -> key gen
+2) check if passwordless ssh can be done to bob's 
+3) check if the file has been transfered from alice to bob using scp  => this should not required password as passwordless authentication is being setup
+4) check if the file has been transfered from alice to bob using rsync (a very big folder, set the rate of transfer and recursively send the folder form alice to bob)
+
+
+
+The autograder should also check if the files id_rsa n id_rsa.pub is created by alice or some other user
+The autograder should also check if the authorized_keys, shared.txt and big_folder in bob has the ownership of bob
+when doing scp and rsync the autograder will itself run the commands provided by the students to check if the transfer is done properly using those commands or not.
+
+
+
+
+
+
+
+
+
+
+
+
+### Background & Context
+
+Remote administration and secure file transfer are foundational skills for any Linux administrator. Two powerful tools, SSH and rsync, work together to provide encrypted remote connections and efficient synchronization of files across systems.
+
+SSH (Secure Shell)
+SSH is the industry-standard protocol for encrypting network traffic when accessing remote machines. It replaces legacy tools like Telnet and RSH by providing:
+
+Strong Encryption: Protects data in transit using algorithms such as AES and RSA.
+
+Authentication Flexibility: Supports password-based, key-based, and two-factor authentication.
+
+Port Forwarding & Tunneling: Enables secure forwarding of arbitrary TCP connections and X11 sessions.
+
+Automation Capabilities: Combined with public/private key pairs, SSH allows scripts and tools to run commands on remote hosts without interactive prompts.
+
+Typical SSH usage patterns include interactive logins (ssh user@host), remote command execution (ssh user@host "command"), and port forwarding (ssh -L local_port:dest_host:dest_port user@host). Key options:
+
+-i <identity_file>: Specify a private key.
+
+-p <port>: Connect to a non-standard SSH port.
+
+-o <option>: Pass configuration settings (e.g., disable host key checking).
+
+-N: Do not execute a remote command (useful for SSH tunnels).
+
+-T: Disable pseudo-terminal allocation for non-interactive commands.
+
+rsync (Remote Sync)
+Originally developed in the late 1990s, rsync is designed to synchronize files and directories between local and remote systems. Its key strengths include:
+
+Delta-Transfer Algorithm: Only the changed portions of files are sent, reducing bandwidth usage.
+
+Compression & Encryption: Often combined with SSH (rsync -e ssh) for secure, compressed transfers.
+
+Versatile Options: Supports archive mode, progress indicators, bandwidth limiting, and partial transfers.
+
+Common rsync usage is rsync -avz --bwlimit=1000 source/ user@host:destination/. Key options:
+
+-a: Archive mode (recursive, preserve permissions, timestamps, symlinks).
+
+-v: Verbose output.
+
+-z: Compress data during transfer.
+
+--bwlimit=<KB/s>: Throttle bandwidth to avoid saturating the network.
+
+-P: Show progress and allow resumption of interrupted transfers.
+
+Together, SSH and rsync form a robust platform for secure, automated file distribution, backups, and remote administration.
+
+
+---
+
+### Tasks
+
+Key Generation: As `alice`, generate a RSA key pair without a passphrase.
+Key Deployment: Copy the public key to `bob` on `localhost`.
+File Transfer (SCP): Transfer `shared.txt` to `bob@localhost:` without a password.
+Directory Synchronization (rsync): Recursively sync `big_folder/` to `bob@localhost:big_folder` with verbose output.
+
+### Submission Template
+
+A file exists at `/home/labDirectory/submissions.txt` containing:
+
+```text
+testcase 1 : <manual>
+testcase 2 : <manual>
+testcase 3 : <command>
+testcase 4 : <command>
+```
+
+For Testcases 1 and 2**: Perform steps manually (no entries needed).
+For Testcases 3 and 4**: **Remove** the `<command>` placeholder and **replace** it with the exact `scp` (task 3) and `rsync` (task 4) commands you used.
+Do not** modify any other text or formatting.
+Save `/home/labDirectory/submissions.txt`—this is your sole submission.
+
+There is **no manual submission file** required beyond this—an automated script will read your two provided commands to verify correctness.
+
+---
+
+**Important:**
+
+Ensure passwordless SSH is fully functional before running `scp` or `rsync`.
+Do **not** use sudo—operate under `alice`’s permissions.
+For `rsync`, include the trailing slash on `big_folder/` to copy contents.
+Verify copied content by listing `bob`’s home directory (e.g., `ssh bob@localhost ls`).
+
+**Good luck securing and synchronizing your files!**

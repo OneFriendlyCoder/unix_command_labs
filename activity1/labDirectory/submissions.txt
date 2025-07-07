@@ -1,0 +1,6 @@
+<write bash command to display all the tcp sockets with established connections>
+<write bash command to display all the tcp sockets with IP addresses and port numbers in numeric form>
+<write bash command to display all the udp sockets with established connections>
+<write bash command to display all the udp sockets with IP addresses and port numbers in numeric form>
+<write bash command to display all the tcp sockets in listening mode>
+<write bash command to display all the udp sockets in listening mode>

@@ -1,0 +1,20 @@
+Problem Statement :
+
+
+Imagine you're a network administrator at a tech company, and one day, the operations team reports that employees are experiencing slow internet speeds and cant access some websites. To start troubleshooting, you decide to check the connectivity of your machine to the network, as it could be the first step to diagnose the issue.
+
+
+Part 1:
+
+* Run the command ping to localhost 5 times.
+
+* Save the command to file solutions.txt
+
+* Answer the questions present in the questions.txt file.
+
+   -> Which flag specifies the number of packets to send before stopping?
+
+   -> Which flag can be used to change the interval between consecutive ping requests?
+
+
+Note : In the solutions.txt file, replace the <command> to input the actual command and replace the <Answer> to write the actual answers.

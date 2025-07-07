@@ -1,0 +1,19 @@
+Problem Statement : 
+
+You are a seasoned network administrator at a mid-sized corporation. One crisp Monday morning, you received an urgent email from the software deployment team: a critical update file needed to be downloaded from an external server for the upcoming system patch rollout. The file, "system_update", was hosted on localhost:30001/system_update, and the team required it to be stored in a specific directory on the local network storage for further testing and deployment.
+
+
+Part 1:
+
+* Run the bash command to download the file named system_update
+
+* Save the file in the directory named "downloads" in the current working directory
+
+* Answer the questions present in the solutions.txt file.
+
+  -> Which flag allows to specify the directory where the downloaded file will be saved?
+
+  -> Which flag can be used to limit the download speed?
+
+
+Note : In the solutions.txt file, replace the <command> to input the actual command and replace the <Answer> to write the actual answers.

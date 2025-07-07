@@ -1,0 +1,3 @@
+TASK 1 : Change the ownership of README.md                              sudo chown -v alice README.md
+TASK 2 : Change the User and Group for Module ownership                 sudo chown -v alice:projectgroup src/module1/file1.txt
+TASK 3 : Recursive ownership shift of the whole /src directory          sudo chown -R -v alice src

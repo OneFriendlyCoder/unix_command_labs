@@ -1,0 +1,27 @@
+Problem Statement :
+
+Imagine you're a junior web developer working on a project for a client. Your team has been tasked with building an application that pulls live data from various websites and displays it in your platform. One of the first steps in the project is to ensure that your application can retrieve HTML content from different sources on the web.
+
+
+As part of the development process, you have decided to test your ability to retrieve web pages using the curl command. You need to fetch the HTML content of a webpage, save it to a file, and check if the content is being fetched properly. This will help you ensure that the web scraping feature in your application will work as expected when its integrated with live websites.
+
+
+As a part of this activity, when you attempt the lab, docker will start a server at localhost:30002 where you will find the index.html. You can access the site from your browser by navigating to localhost:30002/index.html
+
+
+Objective : 
+
+* Use curl to fetch the HTML content of localhost:30002/index.html
+
+* Save the command to file solutions.txt
+
+* Save the output to the file named activity2.html in the present working directory
+
+* Answer the questions present in the solutions.txt file.
+
+   -> Which flag allows you to specify the output file name?
+
+   -> Which flag is used to follow redirects?
+
+
+Note : In the solutions.txt file, replace the <command> to input the actual command and replace the <Answer> to write the actual answers.

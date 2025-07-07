@@ -1,0 +1,53 @@
+### Background & Context
+
+In Debian‑based systems, package management is typically handled by two complementary tools:
+
+* **`dpkg`**: The low‑level package manager that installs, queries, and removes individual `.deb` files.
+
+  * Common options:
+
+    * `-i <file.deb>` : Install the specified package.
+    * `-r <package>` : Remove a package (keeping its config files).
+    * `-P <package>` : Purge a package (removing config files too).
+    * `-l`            : List installed packages.
+    * `-L <package>` : List files belonging to a package.
+
+* **`apt`**: A higher‑level tool that resolves dependencies, fetches packages from repositories, and manages upgrades.
+
+  * Common options:
+
+    * `install <package>`  : Download and install a package (plus dependencies).
+    * `remove <package>`   : Uninstall a package (keeping config files).
+    * `purge <package>`    : Uninstall and remove config files.
+    * `update`             : Refresh package lists.
+    * `upgrade`            : Upgrade all upgradable packages.
+
+This lab will reinforce when to use `dpkg` (local `.deb` files) versus `apt` (online repos) and demonstrate key options for each.
+
+---
+
+### Tasks
+
+1. **Install `htop`** from the pre‑downloaded `.deb` in `/home/labDirectory/` using `dpkg`, ensuring all dependencies are satisfied.
+2. **Install `vim`** using `apt`, refreshing package lists first if necessary.
+3. Verify installations by running `htop --version` and `vim --version`, and redirecting their output to `htop.txt` and `vim.txt` respectively in the current directory.
+
+---
+
+### Submission Template
+
+There is **no manual submission file** required for this lab. Instead, an automated grading script will verify the completion of each task by checking:
+
+* Presence of `htop` and `vim` on the system.
+* Existence of `htop.txt` and `vim.txt` containing the correct version strings.
+
+---
+
+**Important:**
+
+* **Dependency errors:** If `dpkg -i` reports missing dependencies, run `sudo apt-get install -f` (or `sudo apt -f install`) to fix them.
+* **Non‑interactive mode:** Ensure commands run without prompts (use `-y` with `apt` if needed).
+* **Permissions:** Use `sudo` for all installation commands.
+* **File paths:** Reference `/home/labDirectory/htop_*.deb` explicitly—do not move the file.
+
+**Good luck and enjoy mastering Debian package tools!**

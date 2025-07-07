@@ -1,0 +1,16 @@
+Problem Statement :
+
+You are a network administrator at WizardNetwork Solutions, a company that maintains a large data center with hundreds of Linux-based servers. Recently, intermittent connectivity issues have been reported from a subset of servers. Preliminary investigations suggest that misconfigured network interfaces might be the culprit-some servers may be missing a required management IP address or have an extra unintended IP address due to legacy configuration.
+
+
+Objective:
+
+To quickly identify the misconfigured servers, you must automate the process of verifying that each servers network interfaces have the correct IPv4 addresses. The standard operating procedure is as follows:
+
+
+   -> Use the ip command to list all network interfaces and display their IP addresses.
+
+   -> Filter the output so that only the IPv4 addresses(including the CIDR suffix) are captured and store them in a file called ipv4_addresses.txt in the working directory
+
+
+Note : In the solutions.txt file, replace the <command> to input the actual command.

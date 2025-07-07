@@ -1,0 +1,6 @@
+su -c 'echo "{T@sk1C0mpleteD}" > 1.txt' alice
+su - alice -c 'echo "$LABVAR"' > 2.txt
+su -s /bin/sh alice -c 'echo "$0" > 3.txt'
+
+
+su -p alice -c 'echo "$EXPORT_ME" > 4.txt'  --> removed for now

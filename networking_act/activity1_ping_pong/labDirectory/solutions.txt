@@ -1,0 +1,3 @@
+<command>
+Which flag specifies the number of packets to send before stopping? : <Answer>
+Which flag can be used to change the interval between consecutive ping requests? : <Answer>

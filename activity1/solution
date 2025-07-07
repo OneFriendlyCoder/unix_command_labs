@@ -1,0 +1,17 @@
+# TCP sockets with established connections
+ss -t state established
+
+# TCP sockets with IP addresses and port numbers in numeric form
+ss -tn
+
+# UDP sockets (UDP is connectionless; shows active sockets)
+ss -u
+
+# UDP sockets with IP addresses and port numbers in numeric form
+ss -un
+
+# TCP sockets in listening mode
+ss -t state listening
+
+# UDP sockets in listening mode
+ss -u state listening

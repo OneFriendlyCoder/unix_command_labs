@@ -1,0 +1,55 @@
+### Background & Context
+
+The `su` (substitute user) command allows you to run commands with the privileges of another user account, enabling controlled elevation or change of identity in a Linux environment. In this lab, you will practice using different `su` command options to execute commands as the `alice` user, capture outputs, and redirect them to files. You’ll explore:
+
+* Running commands as another user with and without a login shell.
+* Using different shells via `-s`.
+* Passing environment variables and special characters safely.
+
+**Key `su` Options to Learn:**
+
+* `-c <command>` : Execute the specified `<command>` as the target user and then exit.
+* `-l` or `-`     : Start a **login shell**, which initializes the target user’s environment (e.g., loading profile scripts).
+* `-s <shell>`   : Specify an **alternate shell** (e.g., `/bin/sh`, `/bin/bash`) instead of the user’s default shell.
+* `-m` or `--preserve-environment` : Preserve the current environment variables instead of loading the target user’s login environment.
+* `-p`           : Similar to `-m`, preserve environment, maintaining variables like `PATH`.
+
+This hands-on exercise will deepen your understanding of user privilege management, command quoting, and output redirection in multi-user systems.
+
+### Tasks
+
+You have three objectives. For each, construct and run the appropriate `su` command, then capture its output into a numbered text file:
+
+1. **Task 1:** As user `alice`, write the literal string `{T@sk1C0mpleteD}` into a file named `1.txt`.
+2. **Task 2:** As user `alice`, echo the environment variable `LABVAR` (assume it is already set in Alice’s environment) and write its value into `2.txt`.
+3. **Task 3:** As user `alice`, invoke a non-login shell `/bin/sh`, then echo the value of `$0` (the shell’s name) into `3.txt`.
+
+For each task, you must:
+
+* Choose the correct `su` options (`-c`, `-l`, `-s`, etc.).
+* Properly quote your command to preserve special characters and variable expansion.
+* Redirect command output to the specified file in the current working directory.
+
+### Autograding & Evaluation
+
+There is **no manual submission file** required for this lab. Instead, an automated grading script will verify the completion of each task by checking the presence and contents of the output files in your working directory. The autograder will perform the following checks:
+
+1. **Task 1 Check**: Verify that `1.txt` exists and contains exactly the string `{T@sk1C0mpleteD}` (with braces and capitalization).
+2. **Task 2 Check**: Verify that `2.txt` exists and contains the current value of the `LABVAR` environment variable for user `alice`.
+3. **Task 3 Check**: Verify that `3.txt` exists and contains the value of `$0` when invoked under `/bin/sh` for user `alice` (typically `/bin/sh`).
+
+**Important:**
+
+* The autograder will run each `su` command non-interactively, so ensure your commands do not prompt for passwords or additional input.
+* Files must be created in the current working directory (not absolute paths).
+* Exact string matching is used—extra whitespace or missing quotes will cause a grading error.
+
+---
+
+**Tips for Success:**
+
+* Test each `su` invocation in your terminal before the autograder runs.
+* Use proper quoting to handle braces and variable expansion.
+* Confirm file contents with `cat 1.txt`, etc., to ensure correctness.
+
+**Good luck and enjoy mastering `su`!**

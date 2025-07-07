@@ -1,0 +1,7 @@
+number of cronjobs for bob: <answer>
+number of cronjobs for alice: <answer>
+number of cronjobs for root: <answer>
+name of the cronjob that runs every day at 06:00: <answer>
+
+
+
