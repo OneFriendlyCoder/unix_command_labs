@@ -36,7 +36,7 @@ if os.path.exists(readme_path):
     owner, _ = get_owner_group(readme_path)
     if owner == "alice":
         results[0].update({
-            "status": "pass",
+            "status": "success",
             "score": 1,
             "message": "Test case 1 passed"
         })
@@ -46,7 +46,7 @@ if os.path.exists(file1_path):
     owner, group = get_owner_group(file1_path)
     if owner == "alice" and group == "projectgroup":
         results[1].update({
-            "status": "pass",
+            "status": "success",
             "score": 1,
             "message": "Test case 2 passed"
         })
@@ -66,7 +66,7 @@ def all_owned_by_alice(path):
 
 if os.path.exists(src_dir) and all_owned_by_alice(src_dir):
     results[2].update({
-        "status": "pass",
+        "status": "success",
         "score": 1,
         "message": "Test case 3 passed"
     })

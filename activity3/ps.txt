@@ -1,3 +1,9 @@
+### Objective
+
+- Practice using `chown` to change file and directory ownership for a target user (`alice`) and groups.
+- Learn and apply common `chown` options (`-v`, `-R`) and user:group notation.
+- Verify ownership changes non-interactively with `ls -l` or `stat` for autograder checks.
+
 ### Background & Context
 
 The `chown` (change owner) command in Linux is used to change the user and/or group ownership of files and directories. Proper file ownership is essential for enforcing security and access control in multi-user systems. In this lab, you will practice using different `chown` options to modify ownership of individual files and entire directory trees.
@@ -19,6 +25,9 @@ Perform the following three tasks, each using the `chown` command. After executi
 1. **Task 1:** Change the owner of `README.md` to `alice`, displaying verbose output.
 2. **Task 2:** Change both the owner to `alice` and the group to `projectgroup` for the file `src/module1/file1.txt`, displaying verbose output.
 3. **Task 3:** Recursively change ownership of the entire `src` directory (and its contents) so that `alice` is the owner, showing verbose output.
+
+### Submission Template 
+* There is **no manual submission file** required for this lab. Instead, an automated grading script will verify the completion of each task by checking the presence and contents of the output files in your working directory.
 
 ### Autograding & Evaluation
 
