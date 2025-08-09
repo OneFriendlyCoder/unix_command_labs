@@ -2,19 +2,15 @@ import os
 import json
 import pwd
 
-# Configuration
 BASE_DIR = "/home/labDirectory/"
 EVALUATE_FILE = "/home/.evaluationScripts/evaluate.json"
 
-# Test definitions: filename, expected content, require alice ownership
 tests = [
     {"testid": 1, "filename": "1.txt", "expected": "{T@sk1C0mpleteD}", "check_owner": True},
-    {"testid": 2, "filename": "2.txt", "expected": "{T@sk2C0mpleteD}", "check_owner": False},  # Ownership check disabled
+    {"testid": 2, "filename": "2.txt", "expected": "{T@sk2C0mpleteD}", "check_owner": False},
     {"testid": 3, "filename": "3.txt", "expected": "sh",               "check_owner": True},
-    # Removed testid 4
 ]
 
-# Initialize results
 results = []
 for t in tests:
     results.append({
@@ -25,34 +21,33 @@ for t in tests:
         "message": f"Test case {t['testid']} failed"
     })
 
-# Evaluate each test
 for idx, t in enumerate(tests):
     file_path = os.path.join(BASE_DIR, t["filename"])
     try:
-        # Check existence
         if not os.path.isfile(file_path):
             continue
-        # Read content
         with open(file_path, 'r') as f:
             content = f.read().strip()
-        if content != t["expected"]:
-            continue
-        # Check owner if required
+        if t.get("testid") == 3 and t.get("expected") == "sh":
+            if content not in ("sh", "/bin/sh"):
+                continue
+        else:
+            if content != t["expected"]:
+                continue
         if t.get("check_owner"):
             stat_info = os.stat(file_path)
             owner = pwd.getpwuid(stat_info.st_uid).pw_name
             if owner != "alice":
                 continue
-        # All checks passed
+
         results[idx].update({
-            "status": "pass",
+            "status": "success",
             "score": 1,
-            "message": f"Test case {t['testid']} passed"
+            "message": f"Test case {t['testid']} success"
         })
     except:
-        pass  # Fail silently, leave default fail message
+        pass  
 
-# Write evaluation results
 evaluate_data = {"data": results}
 try:
     os.makedirs(os.path.dirname(EVALUATE_FILE), exist_ok=True)

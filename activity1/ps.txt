@@ -1,6 +1,7 @@
 Background & Context : 
 
 Linux provides the `ss` (socket statistics) utility to investigate socket usage on the system. Unlike its predecessor `netstat`, `ss` is faster and offers more filtering capabilities. In this lab, you will explore how to list various categories of TCP and UDP sockets, including established connections, numeric address displays, and listening sockets.
+
 Objectives : 
 
 By completing this assignment, you will :

@@ -1,3 +1,9 @@
+### Objective
+
+- Practice using `su` to run commands as another user (`alice`) non-interactively.
+- Safely handle quoting and environment variable expansion when switching users.
+- Capture command outputs to files and verify them with an automated autograder.
+
 ### Background & Context
 
 The `su` (substitute user) command allows you to run commands with the privileges of another user account, enabling controlled elevation or change of identity in a Linux environment. In this lab, you will practice using different `su` command options to execute commands as the `alice` user, capture outputs, and redirect them to files. You’ll explore:
@@ -29,6 +35,10 @@ For each task, you must:
 * Choose the correct `su` options (`-c`, `-l`, `-s`, etc.).
 * Properly quote your command to preserve special characters and variable expansion.
 * Redirect command output to the specified file in the current working directory.
+
+### Submission Template 
+* All the files 1.txt, 2.txt and 3.txt should be present in the /home/labDirectory/
+* There is **no manual submission file** required for this lab. Instead, an automated grading script will verify the completion of each task by checking the presence and contents of the output files in your working directory.
 
 ### Autograding & Evaluation
 
