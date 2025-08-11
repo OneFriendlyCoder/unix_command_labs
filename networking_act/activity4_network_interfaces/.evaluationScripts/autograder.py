@@ -109,7 +109,7 @@ def main():
     # produces an output (or downloads a copy) matching the correct file.
     if command and run_command(command):
         dataSkel["testid"] = 1
-        dataSkel["status"] = "pass"
+        dataSkel["status"] = "success"
         dataSkel["score"] = 1
         dataSkel["message"] = "Test case 1 passed"
     else:

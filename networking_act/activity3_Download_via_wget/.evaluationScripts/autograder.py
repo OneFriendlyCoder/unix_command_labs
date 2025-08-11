@@ -109,7 +109,7 @@ def main():
     return_code_run_command = run_command(command) == 0
     if command and return_code_run_command == 0:
         dataSkel["testid"] = 1
-        dataSkel["status"] = "pass"
+        dataSkel["status"] = "success"
         dataSkel["score"] = 1
         dataSkel["message"] = "Test case 1 passed"
     else:
@@ -131,7 +131,7 @@ def main():
     if answers:
         if "P" or "directory-prefix" in answers.get("Which flag allows to specify the directory where the downloaded file will be saved?"):
             dataSkel["testid"] = 2
-            dataSkel["status"] = "pass"
+            dataSkel["status"] = "success"
             dataSkel["score"] = 1
             dataSkel["message"] = "Test case 2 passed"
         else:
@@ -144,7 +144,7 @@ def main():
         # Test case 3
         if "limit-rate" in answers.get("Which flag can be used to limit the download speed?"):
             dataSkel["testid"] = 3
-            dataSkel["status"] = "pass"
+            dataSkel["status"] = "success"
             dataSkel["score"] = 1
             dataSkel["message"] = "Test case 3 passed"
         else:

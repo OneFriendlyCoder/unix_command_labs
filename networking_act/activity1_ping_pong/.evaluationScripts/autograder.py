@@ -56,7 +56,7 @@ def main():
     }
 
     if command and run_command_and_check_ping(command):
-        dataSkel["status"] = "pass"
+        dataSkel["status"] = "success"
         dataSkel["score"] = 1
         dataSkel["message"] = "Test case 1 passed"
     
@@ -72,7 +72,7 @@ def main():
     }
 
     if answers.get("Which flag specifies the number of packets to send before stopping?") == "-c":
-        dataSkel["status"] = "pass"
+        dataSkel["status"] = "success"
         dataSkel["score"] = 1
         dataSkel["message"] = "Test case 2 passed"
 
@@ -88,7 +88,7 @@ def main():
     }
 
     if answers.get("Which flag can be used to change the interval between consecutive ping requests?") == "-i":
-        dataSkel["status"] = "pass"
+        dataSkel["status"] = "success"
         dataSkel["score"] = 1
         dataSkel["message"] = "Test case 3 passed"
 

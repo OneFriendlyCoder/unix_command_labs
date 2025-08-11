@@ -79,7 +79,7 @@ def main():
     # Test case 1
     if command and run_command(command):
         dataSkel["testid"] = 1
-        dataSkel["status"] = "pass"
+        dataSkel["status"] = "success"
         dataSkel["score"] = 1
         dataSkel["message"] = f"Test case 1 passed"
     else:
@@ -93,7 +93,7 @@ def main():
     if answers:
         if answers["Which flag allows you to specify the output file name?"] == "-o":
             dataSkel["testid"] = 2
-            dataSkel["status"] = "pass"
+            dataSkel["status"] = "success"
             dataSkel["score"] = 1
             dataSkel["message"] = f"Test case 2 passed"
         else:
@@ -106,7 +106,7 @@ def main():
         # Test case 3
         if answers["Which flag is used to follow redirects?"] == "-L":
             dataSkel["testid"] = 3
-            dataSkel["status"] = "pass"
+            dataSkel["status"] = "success"
             dataSkel["score"] = 1
             dataSkel["message"] = f"Test case 3 passed"
         else:
