@@ -1,39 +1,36 @@
-Background & Context : 
+Background & Context :
 
 Linux provides the `ss` (socket statistics) utility to investigate socket usage on the system. Unlike its predecessor `netstat`, `ss` is faster and offers more filtering capabilities. In this lab, you will explore how to list various categories of TCP and UDP sockets, including established connections, numeric address displays, and listening sockets.
-
-Objectives : 
+Objectives :
 
 By completing this assignment, you will :
 
 1. Gain hands-on experience with the `ss` command and its options.
-
 2. Learn to filter socket listings by protocol, state, and numeric output.
-
 3. Interpret command output to understand active network connections and services.
-Tasks & Learning the `ss` Options : 
+`ss` Options :
 
 In this section, you will explore the various options supported by the `ss` utility.
 
-Protocol Selection : 
+Protocol Selection :
 
      `-t` : Display **TCP** sockets.
      `-u` : Display **UDP** sockets.
      `-w` : Display **RAW** sockets.
      `-x` : Display **UNIX** domain sockets.
 
-State Filtering : 
+State Filtering :
 
     `state ESTABLISHED` : Show only sockets in the established connection state.
     `state LISTEN` : Show only sockets in listening mode.
     (Hint) Use `ss --help` or `man ss` to discover other states (e.g., `TIME-WAIT`, `CLOSE-WAIT`).
 
-Numeric vs. Resolved Addresses : 
+Numeric vs. Resolved Addresses :
 
     `-n` : Show IP addresses and port numbers in numeric form (do not resolve hostnames or service names).
     Without `-n` : `ss` will perform DNS lookups or service name resolutions, showing human-readable names.
 
-Additional Useful Options : 
+Additional Useful Options :
 
     `-a` or `--all` : Show **all** sockets, regardless of state.
     `-p` : Display **process** details (PID and program name) using sockets.

@@ -50,7 +50,7 @@ def main():
             passed = (student_out == correct_out)
             results.append({
                 "testid": idx,
-                "status": "pass" if passed else "fail",
+                "status": "success" if passed else "fail",
                 "score": 1 if passed else 0,
                 "maximum marks": 1,
                 "message": f"Test case {idx} {'passed' if passed else 'failed'}"

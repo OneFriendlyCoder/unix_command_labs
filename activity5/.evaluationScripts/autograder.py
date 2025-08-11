@@ -48,7 +48,7 @@ for i, (test_name, expected_ans) in enumerate(correct.items(), start=1):
     passed = (student_ans == expected_ans)
     dataSkel.append({
         "testid": i,
-        "status": "pass" if passed else "fail",
+        "status": "success" if passed else "fail",
         "score": 1 if passed else 0,
         "maximum marks": 1,
         "message": f"Test case {i} {'passed' if passed else 'failed'}"
@@ -60,4 +60,4 @@ with open(EVALUATE_FILE, 'w') as out:
     json.dump({"data": dataSkel}, out, indent=4)
 
 # Exit non-zero if any failed
-exit(0 if all(d["status"] == "pass" for d in dataSkel) else 1)
+exit(0 if all(d["status"] == "success" for d in dataSkel) else 1)

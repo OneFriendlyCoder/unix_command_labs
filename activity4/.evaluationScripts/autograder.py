@@ -23,7 +23,7 @@ dataSkel_list = [
 
 # --- Check git installation ---
 if is_installed("vim --version"):
-    dataSkel_list[0]["status"] = "pass"
+    dataSkel_list[0]["status"] = "success"
     dataSkel_list[0]["score"] = 1
     dataSkel_list[0]["message"] = "vim is installed"
 else:
@@ -31,7 +31,7 @@ else:
 
 # --- Check htop installation ---
 if is_installed("htop --version"):
-    dataSkel_list[1]["status"] = "pass"
+    dataSkel_list[1]["status"] = "success"
     dataSkel_list[1]["score"] = 1
     dataSkel_list[1]["message"] = "htop is installed"
 else:

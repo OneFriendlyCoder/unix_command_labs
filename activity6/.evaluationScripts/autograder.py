@@ -196,7 +196,7 @@ if __name__ == '__main__':
         passed = test()
         dataSkel.append({
             'testid': i,
-            'status': 'pass' if passed else 'fail',
+            'status': 'success' if passed else 'fail',
             'score': 1 if passed else 0,
             'maximum marks': 1,
             'message': f"testcase {i} {'passed' if passed else 'failed'}"
@@ -206,4 +206,4 @@ if __name__ == '__main__':
     with open(EVALUATE_FILE, 'w') as out:
         json.dump({'data': dataSkel}, out, indent=4)
 
-    sys.exit(0 if all(d['status'] == 'pass' for d in dataSkel) else 1)
+    sys.exit(0 if all(d['status'] == 'success' for d in dataSkel) else 1)

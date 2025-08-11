@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Target directory
 DEST_DIR="/home/labDirectory/"
-DEB_URL="http://ftp.cn.debian.org/debian/pool/main/h/htop/htop_2.2.0-1+b1_amd64.deb"
+DEB_URL="http://ftp.de.debian.org/debian/pool/main/h/htop/htop_3.4.1-5_amd64.deb"
 DEB_NAME="$(basename "$DEB_URL")"
 
 # Ensure running as root
