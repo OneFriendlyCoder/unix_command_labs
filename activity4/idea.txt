@@ -1,53 +1,70 @@
-### Background & Context
+Background & Context : 
 
-In Debian‑based systems, package management is typically handled by two complementary tools:
 
-* **`dpkg`**: The low‑level package manager that installs, queries, and removes individual `.deb` files.
+In Debian based systems, package management is typically handled by two complementary tools :
 
-  * Common options:
 
-    * `-i <file.deb>` : Install the specified package.
-    * `-r <package>` : Remove a package (keeping its config files).
-    * `-P <package>` : Purge a package (removing config files too).
-    * `-l`            : List installed packages.
-    * `-L <package>` : List files belonging to a package.
+`dpkg`: The low level package manager that installs, queries, and removes individual `.deb` files.
 
-* **`apt`**: A higher‑level tool that resolves dependencies, fetches packages from repositories, and manages upgrades.
+  Common options :
 
-  * Common options:
+      `-i <file.deb>` : Install the specified package.
+      `-r <package>` : Remove a package (keeping its config files).
+      `-P <package>` : Purge a package (removing config files too).
+      `-l`      : List installed packages.
+      `-L <package>` : List files belonging to a package.
 
-    * `install <package>`  : Download and install a package (plus dependencies).
-    * `remove <package>`   : Uninstall a package (keeping config files).
-    * `purge <package>`    : Uninstall and remove config files.
-    * `update`             : Refresh package lists.
-    * `upgrade`            : Upgrade all upgradable packages.
+
+ `apt`: A higher level tool that resolves dependencies, fetches packages from repositories, and manages upgrades.
+
+  Common options:
+
+       `install <package>` : Download and install a package (plus dependencies).
+       `remove <package>`  : Uninstall a package (keeping config files).
+       `purge <package>`  : Uninstall and remove config files.
+       `update`       : Refresh package lists.
+       `upgrade`      : Upgrade all upgradable packages.
+
 
 This lab will reinforce when to use `dpkg` (local `.deb` files) versus `apt` (online repos) and demonstrate key options for each.
 
----
 
-### Tasks
+Objective : 
 
-1. **Install `htop`** from the pre‑downloaded `.deb` in `/home/labDirectory/` using `dpkg`, ensuring all dependencies are satisfied.
-2. **Install `vim`** using `apt`, refreshing package lists first if necessary.
-3. Verify installations by running `htop --version` and `vim --version`, and redirecting their output to `htop.txt` and `vim.txt` respectively in the current directory.
+By the end of this lab you will be able to:
 
----
 
-### Submission Template
+    Distinguish between `dpkg` and `apt` and know when to use each tool.
+    Install a local `.deb` package with `dpkg -i` and resolve any missing dependencies.
+    Use `apt` to refresh package lists and install packages non interactively.
+    Verify installed packages by capturing version output to files for automated grading.
+    Troubleshoot common dependency errors using `apt -f install` (or `apt-get install -f`).
+    Follow lab constraints (non-interactive mode, correct file paths, and avoiding `sudo` for the provided commands).
 
-There is **no manual submission file** required for this lab. Instead, an automated grading script will verify the completion of each task by checking:
 
-* Presence of `htop` and `vim` on the system.
-* Existence of `htop.txt` and `vim.txt` containing the correct version strings.
+Tasks : 
 
----
+
+    **Install `htop`** from the pre-downloaded `.deb` in `/home/labDirectory/` using `dpkg`, ensuring all dependencies are satisfied.
+    **Install `vim`** using `apt`, refreshing package lists first if necessary.
+    Verify installations by running `htop --version` and `vim --version`, and redirecting their output to `htop.txt` and `vim.txt` respectively in the current directory.
+
+
+Submission Template : 
+
+
+    There is **no manual submission file** required for this lab. Instead, an automated grading script will verify the completion of each task by checking:
+    Presence of `htop` and `vim` on the system.
+    Existence of `htop.txt` and `vim.txt` containing the correct version strings.
+
+
 
 **Important:**
 
-* **Dependency errors:** If `dpkg -i` reports missing dependencies, run `sudo apt-get install -f` (or `sudo apt -f install`) to fix them.
-* **Non‑interactive mode:** Ensure commands run without prompts (use `-y` with `apt` if needed).
-* **Permissions:** Use `sudo` for all installation commands.
-* **File paths:** Reference `/home/labDirectory/htop_*.deb` explicitly—do not move the file.
+    Dependency errors: If `dpkg -i` reports missing dependencies, run `apt-get install -f` (or `apt -f install`) to fix them.
+    Non interactive mode: Ensure commands run without prompts (use `-y` with `apt` if needed).
+    Permissions: Do not use `sudo` for installation commands.
+    File paths: Reference `/home/labDirectory/htop_*.deb` explicitly do not move the file.
+
 
 **Good luck and enjoy mastering Debian package tools!**

@@ -26,6 +26,7 @@ apt-get update -qq
 
 # Repair any broken dependencies quietly
 apt-get install "${APT_OPTS[@]}" -f >/dev/null 2>&1 || true
+apt-get install -y libnl-3-200 libnl-genl-3-200
 
 # Uninstall htop and vim if present, without installing them later
 # echo "Removing existing htop and vim..."
@@ -34,10 +35,14 @@ apt-get purge "${APT_OPTS[@]}" htop vim >/dev/null 2>&1 || true
 # Create target directory if missing
 # echo "Preparing destination: $DEST_DIR"
 mkdir -p "$DEST_DIR"
+cd /var/tmp
+apt-get download htop
+mv htop_*.deb /home/labDirectory/
+cd "$DEST_DIR"
 
 # Download the specified git .deb file into destination
 # echo "Downloading $DEB_NAME to $DEST_DIR"
-curl -sSL "$DEB_URL" -o "$DEST_DIR/$DEB_NAME"
+# curl -sSL "$DEB_URL" -o "$DEST_DIR/$DEB_NAME"
 
 exec mongod \
   --bind_ip_all \

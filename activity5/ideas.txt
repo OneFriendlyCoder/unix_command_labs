@@ -4,61 +4,70 @@ number of cronjobs for root: 12
 name of the cronjob that runs every day at 06:00: routine_backup_job
 
 
-### Background & Context
+Background & Context : 
 
 The Linux `cron` daemon executes scheduled tasks (cron jobs) defined by users and the system. Each user can have a personal crontab file listing commands and their schedules. System-wide crontabs reside in `/etc/crontab` or `/etc/cron.d/`. Key tools and options include:
 
-* **`crontab -l [-u <user>]`** : List the current user’s cron jobs, or those of another user if `-u` is specified (requires appropriate privileges).
-* **`crontab -e [-u <user>]`** : Edit the crontab for the current or specified user.
-* **`crontab -r [-u <user>]`** : Remove a user’s crontab entirely.
-* **Fields in a cron line:** `minute hour day_of_month month day_of_week command`
-* **Special strings:** `@daily`, `@hourly`, etc., as shortcuts.
+ `crontab -l [-u <user>]` : List the current users cron jobs, or those of another user if `-u` is specified (requires appropriate privileges).
+
+ `crontab -e [-u <user>]` : Edit the crontab for the current or specified user.
+
+ `crontab -r [-u <user>]` : Remove a users crontab entirely.
+
+ Fields in a cron line: `minute hour day_of_month month day_of_week command`
+
+ Special strings: `@daily`, `@hourly`, etc., as shortcuts.
 
 Understanding how to query and parse crontabs is essential for system maintenance, auditing scheduled tasks, and troubleshooting automation.
+Objective : 
 
-### Tasks
+The objective of this lab is to practice querying and analyzing user and system-wide crontab configurations in a Linux environment. You will learn how to inspect scheduled tasks for different users, differentiate between active and commented entries, and identify jobs based on specific time schedules. This will strengthen your skills in system auditing, automation troubleshooting, and command-line text processing.
+Tasks : 
 
 Using the provided environment (no manual editing of system files), you will answer the following questions by querying user crontabs and system schedules:
 
-1. **Count Bob’s Cron Jobs:** Determine how many entries Bob has in his personal crontab.
-2. **Count Alice’s Cron Jobs:** Determine how many entries Alice has in her personal crontab.
-3. **Count Root’s Cron Jobs:** Determine how many entries the root user has (system-wide and personal).
-4. **Identify the 06:00 Daily Job:** Find the name (or command) of the cron job that runs every day at 06:00 system time.
+1. Count bob's cronjobs :  Determine how many entries Bob has in his personal crontab.
 
-### Submission Template
+2. Count alice's cronjobs : Determine how many entries Alice has in her personal crontab.
+
+3. Count root cronjobs : Determine how many entries the root user has (system-wide and personal).
+
+4. Identify the 06:00 Daily Job: Find the name (or command) of the cron job that runs every day at 06:00 system time.
+Submission Template : 
 
 A template file exists at `/home/labDirectory/submissions.txt` containing four lines with angle-bracketed `<answer>` placeholders:
 
 ```text
+
 number of cronjobs for bob: <answer>
+
 number of cronjobs for alice: <answer>
+
 number of cronjobs for root: <answer>
+
 name of the cronjob that runs every day at 06:00: <answer>
+
 ```
 
-Open `/home/labDirectory/submissions.txt` in a text editor.
-For each line, **remove** the `<answer>` placeholder and **replace** it with your computed result (an integer for counts, the exact command or job name for the last question).
-**Do not** modify any other text or formatting in the file.
-Save `/home/labDirectory/submissions.txt`—this file is your **only** submission.
+    Open `/home/labDirectory/submissions.txt` in a text editor.
+    For each line, remove the `<answer>` placeholder and replace it with your computed result (an integer for counts, the exact command or job name for the last question).
+    Do not modify any other text or formatting in the file.
+    Save `/home/labDirectory/submissions.txt`this file is your only submission.
+    There is no manual submission file required beyond thisan automated grading script will verify your answers by reading this file.
 
-There is **no manual submission file** required beyond this—an automated grading script will verify your answers by reading this file.
+***Important***:
 
----
+    Use `sudo crontab -l -u <username>` to inspect other users cron entries.
+    When counting, ignore blank lines and comments (lines starting with `#`).
+    System-wide jobs in `/etc/crontab` or `/etc/cron.d/` also count toward roots total.
+    For the 06:00 job, ensure you match the exact scheduling fields (`0 6  `).
+    Do not create or delete any crontab entries this lab is read-only.
 
-**Important:**
+Tips for Success :
 
-Use `sudo crontab -l -u <username>` to inspect other users’ cron entries.
-When counting, ignore blank lines and comments (lines starting with `#`).
-System-wide jobs in `/etc/crontab` or `/etc/cron.d/` also count toward root’s total.
-For the 06:00 job, ensure you match the exact scheduling fields (`0 6 * * *`).
-Do not create or delete any crontab entries—this lab is read-only.
+    Pipe crontab output through `grep -v '^#' | wc -l` to count active lines.
+    Search system files (`/etc/crontab`, `/etc/cron.d/`) for time patterns.
+    Verify your answers by inspecting raw crontab content before replacing placeholders.
 
-**Tips for Success:**
 
-* Pipe crontab output through `grep -v '^#' | wc -l` to count active lines.
-* Search system files (`/etc/crontab`, `/etc/cron.d/`) for time patterns.
-* Verify your answers by inspecting raw crontab content before replacing placeholders.
-
----
-
-**Good luck and happy cron auditing!**
+Good luck and happy cron auditing!
