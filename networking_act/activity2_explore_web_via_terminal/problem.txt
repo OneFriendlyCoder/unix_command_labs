@@ -1,27 +1,57 @@
-Problem Statement :
+Background Details : 
 
-Imagine you're a junior web developer working on a project for a client. Your team has been tasked with building an application that pulls live data from various websites and displays it in your platform. One of the first steps in the project is to ensure that your application can retrieve HTML content from different sources on the web.
+You are a junior web developer building an application that pulls live HTML from various websites. To verify the apps webfetching capability, you will practice retrieving a webpage using the `curl` command line tool.
 
+In the lab environment a Docker container will start a server at `localhost:30002` that hosts an `index.html` you can fetch from `http://localhost:30002/index.html`. This step ensures your scraping/integration code can successfully retrieve HTML and save it for further processing.
+About `curl` :   
 
-As part of the development process, you have decided to test your ability to retrieve web pages using the curl command. You need to fetch the HTML content of a webpage, save it to a file, and check if the content is being fetched properly. This will help you ensure that the web scraping feature in your application will work as expected when its integrated with live websites.
+`curl` is a command line utility for transferring data with URLs. It supports many protocols (HTTP, HTTPS, FTP, etc.) and is widely used for testing endpoints, downloading files, and scripting web requests. `curl` can write output to stdout or directly to files, follow HTTP redirects, set headers, and control timeouts features important for robust web scraping and integration.
 
+ Commonly used `curl` options (useful for this lab)
 
-As a part of this activity, when you attempt the lab, docker will start a server at localhost:30002 where you will find the index.html. You can access the site from your browser by navigating to localhost:30002/index.html
-
+     `o <file>` Write output to `<file>` (instead of stdout).  
+     `O` Save with remote filename (capital O).  
+     `L` Follow HTTP redirects.  
+     `s` Silent mode (no progress meter).  
+     `S` Show error if `s` is used (useful together with `s`).  
+     `I` Fetch only HTTP response headers (HEAD request).  
+     `v` Verbose output for debugging.  
+     `maxtime <seconds>` Maximum time allowed for the entire transfer.
 
 Objective : 
 
-* Use curl to fetch the HTML content of localhost:30002/index.html
+ Use `curl` to fetch the HTML content of `http://localhost:30002/index.html`.  
 
-* Save the command to file solutions.txt
+ Save the exact `curl` command you used into `solutions.txt`.  
 
-* Save the output to the file named activity2.html in the present working directory
+ Save the fetched HTML into a file named `activity2.html` in the current working directory.  
 
-* Answer the questions present in the solutions.txt file.
+ Answer two short questions about `curl` options in `solutions.txt`.
+Task : 
 
-   -> Which flag allows you to specify the output file name?
+1. Start the lab environment (Docker will start the server at `localhost:30002`).  
 
-   -> Which flag is used to follow redirects?
+2. Use `curl` to fetch `http://localhost:30002/index.html` and save the output to `activity2.html`.  
 
+3. In `solutions.txt`, replace the `<command>` placeholder with the exact `curl` command you ran.  
 
-Note : In the solutions.txt file, replace the <command> to input the actual command and replace the <Answer> to write the actual answers.
+4. In `solutions.txt`, replace each `<Answer>` placeholder with the correct answers to these questions :  
+
+      Which flag allows you to specify the output file name ?  
+      Which flag is used to follow redirects ?
+
+Submission :
+
+     Edit `/home/labDirectory/solutions.txt` and replace the `<command>` placeholder with the exact `curl` command you executed.  
+     Replace the `<Answer>` placeholders in the same file with the correct option names.  
+     Do not alter any other text or formatting in `solutions.txt`.  
+     Ensure `activity2.html` exists in your current working directory and contains the fetched HTML before submitting.
+
+ Important :
+
+     The lab server URL is `http://localhost:30002/index.html` (you may also open it in your browser to inspect the page).  
+     Use the `o` (or `O`) option to write output to a file; use `L` to follow redirects if the site redirects.  
+     For quiet/scripting use, combine `s` with `S` to suppress progress but still show errors.  
+     Use `maxtime` to avoid hanging on slow or unresponsive endpoints.  
+     Verify the saved file `activity2.html` by opening or `cat`ing it to confirm the HTML was retrieved.  
+     Keep commands exact and reproducible this is graded by exact match in the `solutions.txt` file.

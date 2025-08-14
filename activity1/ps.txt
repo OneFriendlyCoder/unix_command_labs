@@ -6,18 +6,21 @@ Objectives :
 By completing this assignment, you will :
 
 1. Gain hands-on experience with the `ss` command and its options.
+
 2. Learn to filter socket listings by protocol, state, and numeric output.
+
 3. Interpret command output to understand active network connections and services.
+
 `ss` Options :
 
 In this section, you will explore the various options supported by the `ss` utility.
 
 Protocol Selection :
 
-     `-t` : Display **TCP** sockets.
-     `-u` : Display **UDP** sockets.
-     `-w` : Display **RAW** sockets.
-     `-x` : Display **UNIX** domain sockets.
+       `-t` : Display **TCP** sockets.
+       `-u` : Display **UDP** sockets.
+       `-w` : Display **RAW** sockets.
+       `-x` : Display **UNIX** domain sockets.
 
 State Filtering :
 
@@ -32,31 +35,28 @@ Numeric vs. Resolved Addresses :
 
 Additional Useful Options :
 
-    `-a` or `--all` : Show **all** sockets, regardless of state.
-    `-p` : Display **process** details (PID and program name) using sockets.
-    `-4` / `-6` : Restrict output to **IPv4** or **IPv6** sockets, respectively.
-    `-o` : Show timer information (e.g., retransmission timers) for each socket.
-    `-e` : Provide extended socket information (e.g., congestion control, queue limits).
+      `-a` or `--all` : Show **all** sockets, regardless of state.
+      `-p` : Display **process** details (PID and program name) using sockets.
+      `-4` / `-6` : Restrict output to **IPv4** or **IPv6** sockets, respectively.
+      `-o` : Show timer information (e.g., retransmission timers) for each socket.
+      `-e` : Provide extended socket information (e.g., congestion control, queue limits).
 
 Tasks :
 
-    For each of the six objectives below, construct an `ss` command by selecting and combining the appropriate options listed above.
-    Test your command in the terminal and verify its output matches the intended objective.
+For each of the six objectives below, construct an `ss` command by selecting and combining the appropriate options listed above.
 
-TASK 1 : List all TCP sockets in the ESTABLISHED state
+Test your command in the terminal and verify its output matches the intended objective.
 
-TASK 2 : Show TCP sockets with IP addresses and ports numeric
+    TASK 1 : List all TCP sockets in the ESTABLISHED state
+    TASK 2 : Show TCP sockets with IP addresses and ports numeric
+    TASK 3 : Display all active UDP sockets
+    TASK 4 : List UDP sockets with numeric addresses and ports
+    TASK 5 : List all TCP sockets in LISTEN state
+    TASK 6 : List all UDP sockets in LISTEN state
 
-TASK 3 : Display all active UDP sockets
-
-TASK 4 : List UDP sockets with numeric addresses and ports
-
-TASK 5 : List all TCP sockets in LISTEN state
-
-TASK 6 : List all UDP sockets in LISTEN state
 Submission Template :
 
-    Open /home/labDirectory/submissions.txt in the clabs text editor.
-    For each of the six lines, remove the angle-bracketed placeholder entirely and replace it with the exact ss command that fulfills the described objective.
-    Do not add, remove, or modify any other lines or formatting within the file.
-    Save the changes to the file.
+      Open /home/labDirectory/submissions.txt in the clabs text editor.
+      For each of the six lines, remove the angle-bracketed placeholder entirely and replace it with the exact ss command that fulfills the described objective
+      Do not add, remove, or modify any other lines or formatting within the file.
+      Save the changes to the file.

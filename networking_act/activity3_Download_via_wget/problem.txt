@@ -1,19 +1,54 @@
-Problem Statement : 
+ Background Details
+You are a seasoned network administrator at a midsized corporation. One crisp Monday morning, you received an urgent email from the software deployment team: a critical update file needed to be downloaded from an external server for the upcoming system patch rollout. The file `system_update` is hosted at `http://localhost:30001/system_update`. Your task is to fetch that file and save it into a designated `downloads` directory for further testing and deployment.
 
-You are a seasoned network administrator at a mid-sized corporation. One crisp Monday morning, you received an urgent email from the software deployment team: a critical update file needed to be downloaded from an external server for the upcoming system patch rollout. The file, "system_update", was hosted on localhost:30001/system_update, and the team required it to be stored in a specific directory on the local network storage for further testing and deployment.
+About `wget`  
+`wget` is a noninteractive commandline utility designed for downloading files over HTTP, HTTPS, and FTP. It is well suited to scripts and automated workflows because it supports resuming downloads, rate limiting, retries, directory placement, and quiet/nonverbose modes. For this lab you will use `wget` to fetch the required update file and store it in the specified directory.
+
+ Most useful `wget` options (relevant to this lab)
+ `P <dir>` — Save downloaded files under the directory prefix `<dir>`.  
+  Example: `wget P downloads http://localhost:30001/system_update` → saves to `./downloads/system_update`
+ `O <file>` — Write the downloaded content to `<file>` (overwrites if exists). Useful when you need a specific filename or path.  
+ `limitrate=<rate>` — Limit download speed (e.g., `200k`, `1m`).  
+ `c`, `continue` — Resume an interrupted download (important for large files).  
+ `q` — Quiet mode (suppress output; useful in scripts).  
+ `nv` — Nonverbose: minimal output but still shows basic progress (good for logging).  
+ `t <num>` / `tries=<num>` — Number of retries on failure (default is usually 20).  
+ `T <seconds>` / `timeout=<seconds>` — Network timeout settings.  
+ `noclobber` — Don’t overwrite existing files.  
+ `wait=<seconds>` / `randomwait` — Wait between requests (polite for repeated downloads).
 
 
-Part 1:
 
-* Run the bash command to download the file named system_update
-
-* Save the file in the directory named "downloads" in the current working directory
-
-* Answer the questions present in the solutions.txt file.
-
-  -> Which flag allows to specify the directory where the downloaded file will be saved?
-
-  -> Which flag can be used to limit the download speed?
+ Objective
+ Download the file `system_update` from `http://localhost:30001/system_update` using `wget`.  
+ Save the file into a directory named `downloads` in the current working directory.  
+ Record the exact `wget` command you used in `/home/labDirectory/solutions.txt`.  
+ Answer two short questions inside `solutions.txt`:
+   Which flag allows you to specify the directory where the downloaded file will be saved?
+   Which flag can be used to limit the download speed?
 
 
-Note : In the solutions.txt file, replace the <command> to input the actual command and replace the <Answer> to write the actual answers.
+
+ Task
+1. Ensure the lab server is running at `http://localhost:30001` (the server will be available during the lab).  
+2. Create a `downloads` directory in the current working directory if it does not already exist (e.g., `mkdir p downloads`).  
+3. Use `wget` to download `http://localhost:30001/system_update` and place it inside `downloads/`.  
+4. Edit `/home/labDirectory/solutions.txt`: replace the `<command>` placeholder with the exact `wget` command you executed.  
+5. In the same file, replace each `<Answer>` placeholder with the correct `wget` option names.
+
+
+
+ Submission
+ Edit `/home/labDirectory/solutions.txt`: replace `<command>` with the exact `wget` command you executed.  
+ Replace the `<Answer>` placeholders with the correct flags for the two questions.  
+ Do not alter any other text or formatting in the file.  
+ Ensure the downloaded file exists at `./downloads/system_update` before finishing — the presence and content of this file will be validated.
+
+
+
+ Important Info
+ Use `wget` only for this exercise; the grader expects a `wget` command in `solutions.txt`.  
+ To save into the `downloads` directory, use `P downloads`. Example (format/hint only — copy the command you actually run into `solutions.txt`):  
+  ```bash
+  mkdir p downloads
+  wget P downloads http://localhost:30001/system_update

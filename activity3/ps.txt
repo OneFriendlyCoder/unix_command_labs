@@ -1,54 +1,55 @@
-### Objective
+Background & Context : 
 
-- Practice using `chown` to change file and directory ownership for a target user (`alice`) and groups.
-- Learn and apply common `chown` options (`-v`, `-R`) and user:group notation.
-- Verify ownership changes non-interactively with `ls -l` or `stat` for autograder checks.
+The `chown` (change owner) command in Linux is used to change the user and/or group ownership of files and directories. Proper file ownership is essential for enforcing security and access control in multi user systems. In this lab, you will practice using different `chown` options to modify ownership of individual files and entire directory trees.
 
-### Background & Context
+Key `chown` options to learn :
 
-The `chown` (change owner) command in Linux is used to change the user and/or group ownership of files and directories. Proper file ownership is essential for enforcing security and access control in multi-user systems. In this lab, you will practice using different `chown` options to modify ownership of individual files and entire directory trees.
-
-**Key `chown` Options to Learn:**
-
-* `-v` or `--verbose`         : Display detailed information about each ownership change as it happens.
-* `-R` or `--recursive`       : Apply ownership changes recursively to all files and subdirectories.
-* `<user>:<group>`            : Specify both the new owner and group simultaneously.
-* `<user>`                    : Change only the file owner, leaving the group unchanged.
-* `:<group>`                  : Change only the group ownership, leaving the user unchanged.
+     `v` or `verbose`     : Display detailed information about each ownership change as it happens.
+     `R` or `recursive`    : Apply ownership changes recursively to all files and subdirectories.
+     `<user>:<group>`      : Specify both the new owner and group simultaneously.
+     `<user>`          : Change only the file owner, leaving the group unchanged.
+     `:<group>`         : Change only the group ownership, leaving the user unchanged.
 
 This exercise will reinforce your understanding of file permissions, ownership hierarchies, and the impact of recursive operations.
+Objective : 
 
-### Tasks
+    Practice using `chown` to change file and directory ownership for a target user (`alice`) and groups.
+    Learn and apply common `chown` options (`v`, `R`) and user:group notation.
+    Verify ownership changes noninteractively with `ls l` or `stat` for autograder checks.
 
-Perform the following three tasks, each using the `chown` command. After executing each command, verify the ownership change with `ls -l`:
+Tasks : 
 
-1. **Task 1:** Change the owner of `README.md` to `alice`, displaying verbose output.
-2. **Task 2:** Change both the owner to `alice` and the group to `projectgroup` for the file `src/module1/file1.txt`, displaying verbose output.
-3. **Task 3:** Recursively change ownership of the entire `src` directory (and its contents) so that `alice` is the owner, showing verbose output.
+Perform the following three tasks, each using the `chown` command. After executing each command, verify the ownership change with `ls l`:
 
-### Submission Template 
-* There is **no manual submission file** required for this lab. Instead, an automated grading script will verify the completion of each task by checking the presence and contents of the output files in your working directory.
+    Task 1 : Change the owner of `README.md` to `alice`, displaying verbose output.
+    Task 2 : Change both the owner to `alice` and the group to `projectgroup` for the file `src/module1/file1.txt`, displaying verbose output.
+    Task 3 : Recursively change ownership of the entire `src` directory (and its contents) so that `alice` is the owner, showing verbose output.
 
-### Autograding & Evaluation
+Submission Template :  
 
-There is **no manual submission file** for this lab. An automated grading script will verify the completion of each task by inspecting file and directory ownerships:
+There is no manual submission file required for this lab. Instead, an automated grading script will verify the completion of each task by checking the presence and contents of the output files in your working directory.
+Auto-grading & Evaluation : 
 
-1. **Task 1 Check:** Confirm that `README.md` is owned by user `alice`.
-2. **Task 2 Check:** Confirm that `src/module1/file1.txt` is owned by `alice` and its group is `projectgroup`.
-3. **Task 3 Check:** Confirm that all files and subdirectories under `src/` are owned by `alice`.
+There is no manual submission file for this lab. An automated grading script will verify the completion of each task by inspecting file and directory ownerships :
 
-**Important:**
+    Confirm that `README.md` is owned by user `alice`.
+    Confirm that `src/module1/file1.txt` is owned by `alice` and its group is `projectgroup`.
+    Confirm that all files and subdirectories under `src/` are owned by `alice`.
 
-* The autograder runs `stat` or `ls -l` checks non-interactively; ensure the correct ownership is set.
-* Recursive operations must affect all nested files/directories—partial changes will be marked incorrect.
-* Exact ownership values are required—mismatched user or group names will cause grading failures.
+***Important :***
 
-**Tips for Success:**
+    The autograder runs `stat` or `ls l` checks noninteractively; ensure the correct ownership is set.
+    Recursive operations must affect all nested files/directories partial changes will be marked incorrect.
+    Exact ownership values are required mismatched user or group names will cause grading failures.
 
-* Preview ownership before and after with `ls -l filename` or `ls -lR src/`.
-* Use `sudo` to ensure you have permission to change ownership.
-* Combine options (e.g., `-Rv`) to see verbose recursive changes in one command.
 
----
+Tips for Success :
 
-**Good luck and happy ownership managing!**
+    Preview ownership before and after with `ls l filename` or `ls lR src/`.
+    Use `sudo` to ensure you have permission to change ownership.
+    Combine options (e.g., `Rv`) to see verbose recursive changes in one command.
+
+
+
+
+Good luck and happy ownership managing!

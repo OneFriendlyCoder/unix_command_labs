@@ -1,20 +1,46 @@
-Problem Statement :
+Background Details : 
 
+You are a network administrator at a tech company. The operations team reports that employees are experiencing slow internet speeds and are unable to access certain websites. Before diving into deeper troubleshooting, you decide to verify basic network connectivity from your own machine. Checking local connectivity is often the first diagnostic step to determine if the issue is on the local host or further along the network path.  
 
-Imagine you're a network administrator at a tech company, and one day, the operations team reports that employees are experiencing slow internet speeds and cant access some websites. To start troubleshooting, you decide to check the connectivity of your machine to the network, as it could be the first step to diagnose the issue.
+The `ping` command is one of the most widely used network troubleshooting tools. It works by sending ICMP Echo Request packets to a specified host and measuring the time it takes for the host to reply with ICMP Echo Reply packets.  
 
+This helps determine:  
 
-Part 1:
+    Whether a host is reachable.  
+    The round trip time for packets to travel between your machine and the target.  
+    Packet loss rates if some responses are not received.  
 
-* Run the command ping to localhost 5 times.
+`ping` options :
 
-* Save the command to file solutions.txt
+     `c <count>` Send a specific number of packets before stopping.  
+     `i <interval>` Set the time interval (in seconds) between sending each packet.  
+     `W <timeout>` Specify the time (in seconds) to wait for a reply.  
+     `q` Quiet output; display only summary statistics.  
+     `n` Show numerical IP addresses without resolving hostnames.  
 
-* Answer the questions present in the questions.txt file.
+Objective : 
 
-   -> Which flag specifies the number of packets to send before stopping?
+To use the `ping` command to test connectivity to the localhost, understand its key options, and document both the command used and answers to specific questions about its flags.  
+Task : 
 
-   -> Which flag can be used to change the interval between consecutive ping requests?
+1. Run the `ping` command to localhost exactly 5 times.  
 
+2. Save the command used into the file `solutions.txt`.  
 
-Note : In the solutions.txt file, replace the <command> to input the actual command and replace the <Answer> to write the actual answers.
+3. Answer the following questions in the `questions.txt` file :  
+
+      Which flag specifies the number of packets to send before stopping?  
+      Which flag can be used to change the interval between consecutive ping requests?  
+
+Submission : 
+
+    In `solutions.txt`, replace `<command>` with the exact command you ran.  
+    In `questions.txt`, replace `<Answer>` with the correct answers for each question.  
+    Do not change the file format or remove any other text.  
+
+***Important : ***
+
+     Use `ping` in standard Linux shell syntax.  
+     The `localhost` address can be specified as either `localhost` or `127.0.0.1`.  
+     Ensure your command runs successfully before recording it in `solutions.txt`.  
+     Be precise when writing flag names and answers incorrect formatting will be marked wrong.  

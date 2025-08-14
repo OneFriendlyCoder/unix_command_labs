@@ -1,16 +1,34 @@
-Problem Statement :
+Background Details : 
 
-You are a network administrator at WizardNetwork Solutions, a company that maintains a large data center with hundreds of Linux-based servers. Recently, intermittent connectivity issues have been reported from a subset of servers. Preliminary investigations suggest that misconfigured network interfaces might be the culprit-some servers may be missing a required management IP address or have an extra unintended IP address due to legacy configuration.
+You are a network administrator at Wizard-Network Solutions, a company that maintains a large data center with hundreds of Linux based servers. Recently, intermittent connectivity issues have been reported from a subset of servers. Preliminary investigations suggest that misconfigured network interfaces might be the culprit some servers may be missing a required management IPv4 address or have an unintended extra IPv4 address due to legacy configuration.
 
+To triage this quickly, the team needs an automated way to list each servers configured IPv4 addresses (including the CIDR suffix) so they can be compared against the expected inventory.
+Objective : 
 
-Objective:
+     Use the `ip` command to list all network interfaces and their configured IP addresses.
+     Filter the output so only IPv4 addresses including the CIDR suffix are captured.
+     Store the resulting IPv4 list in a file named `ipv4_addresses.txt` in the working directory.
+     Record the exact command you used in `/home/labDirectory/solutions.txt` by replacing the `<command>` placeholder.
 
-To quickly identify the misconfigured servers, you must automate the process of verifying that each servers network interfaces have the correct IPv4 addresses. The standard operating procedure is as follows:
+Task : 
 
+1. Run a command on the system that produces a list of IPv4 addresses (with CIDR suffixes) for the local host.  
 
-   -> Use the ip command to list all network interfaces and display their IP addresses.
+2. Redirect or write that filtered output to `ipv4_addresses.txt` in the current working directory.  
 
-   -> Filter the output so that only the IPv4 addresses(including the CIDR suffix) are captured and store them in a file called ipv4_addresses.txt in the working directory
+3. In `/home/labDirectory/solutions.txt`, replace the `<command>` placeholder with the exact command you executed to generate `ipv4_addresses.txt`.  
 
+4. Do not change any other text or formatting in `solutions.txt`.
+Submission : 
 
-Note : In the solutions.txt file, replace the <command> to input the actual command.
+     Edit `/home/labDirectory/solutions.txt`: replace `<command>` with the exact command you ran to produce `ipv4_addresses.txt`.  
+     Ensure a file named `ipv4_addresses.txt` exists in your working directory and contains only IPv4 addresses (each including the CIDR suffix) this file will be validated.  
+     Do not modify any other lines or formatting in `solutions.txt`.
+
+Important Info : 
+
+    Recommended base tool: the `ip` command (part of `iproute2`). Avoid using deprecated tools like `ifconfig`.  
+    The grader expects only IPv4 addresses with CIDR in `ipv4_addresses.txt` (examples: `192.168.1.10/24`, `10.0.0.5/8`), one per line.  
+    Ensure the command you put into `/home/labDirectory/solutions.txt` is exactly the command you ran (the grader matches exact text).  
+    Run your command and inspect `ipv4_addresses.txt` (e.g., `cat ipv4_addresses.txt`) to confirm output contains only IPv4/CIDR entries before submitting.  
+    If you run the command on a multi interface host, expect multiple lines (one per configured IPv4 address). If a host has no IPv4 address, `ipv4_addresses.txt` should be empty (the grader will handle that case).  

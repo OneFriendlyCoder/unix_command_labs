@@ -11,17 +11,55 @@ SSH (Secure Shell) : SSH is the industry-standard protocol for encrypting networ
 
 Typical SSH usage patterns include interactive logins (ssh user@host), remote command execution (ssh user@host "command"), and port forwarding (ssh -L local_port:dest_host:dest_port user@host).
 
-Key options:
+Key options :
 
-    -i <identity_file>: Specify a private key.
-    -p <port>: Connect to a non-standard SSH port.
-    -o <option>: Pass configuration settings (e.g., disable host key checking).
-    -N: Do not execute a remote command (useful for SSH tunnels).
-    -T: Disable pseudo-terminal allocation for non-interactive commands.
+      -i <identity_file>: Specify a private key.
+      -p <port>: Connect to a non-standard SSH port.
+      -o <option>: Pass configuration settings (e.g., disable host key checking).
+      -N: Do not execute a remote command (useful for SSH tunnels).
+      -T: Disable pseudo-terminal allocation for non-interactive commands.
 
-rsync (Remote Sync)
+ssh-keygen : is a command-line tool used to create, manage, and convert authentication keys for the SSH (Secure Shell) protocol.
 
-Originally developed in the late 1990s, rsync is designed to synchronize files and directories between local and remote systems. Its key strengths include:
+It is most commonly used to generate public-private key pairs that enable password-less and more secure authentication when connecting to remote systems
+
+Key Options : 
+
+    `-t <type>`   : Specify key type (e.g., `rsa`, `ed25519`, `ecdsa`).       
+    `-b <bits>`   : Key length in bits (e.g., `2048` or `4096` for RSA).       
+    `-C <comment>`  : Add a label/comment (often `user@host` for identification).   
+    `-f <filename>` : Specify output file for the key pair (default: `~/.ssh/id_rsa`).
+    `-N <passphrase>`: Provide a passphrase (or `""` for no passphrase).        
+    `-q`       : Quiet mode suppress output messages.              
+    `-y`       : Read a private key file and print the public key.        
+    `-p`       : Change passphrase of an existing private key.          
+
+ssh-copy-id : is a helper tool that installs your public SSH key onto a remote systems ~/.ssh/authorized_keys file.
+
+Its a quick and reliable way to enable password-less authentication without having to manually edit files or set permissions.
+
+Key options : 
+
+    `-i <identity_file>` : Specify which public key file to install (default: `~/.ssh/id_rsa.pub`).
+    `-f`         : Force mode install key even if already present.
+    `-p <port>`     : Specify a custom SSH port.
+    `-o <ssh_option>`  : Pass specific SSH configuration options.
+
+scp : (Secure Copy) is a command-line utility that securely transfers files and directories between local and remote systems over SSH. It encrypts both the file contents and the transfer process, preventing eavesdropping or tampering.
+
+Key options : 
+
+    `-r`         : Copy directories recursively.
+    `-P <port>`     : Specify remote SSH port (note uppercase `P`).
+    `-i <identity_file>` : Use a specific private key for authentication.
+    `-C`         : Enable compression during transfer.
+    `-p`         : Preserve file attributes (timestamps, permissions).
+    `-q`         : Quiet mode suppress progress meter and non-error messages.
+    `-v`         : Verbose output for debugging connections.
+
+rsync (Remote Sync) : 
+
+Originally developed in the late 1990s, rsync is designed to synchronize files and directories between local and remote systems. Its key strengths include :
 
     Delta-Transfer Algorithm: Only the changed portions of files are sent, reducing bandwidth usage.
     Compression & Encryption: Often combined with SSH (rsync -e ssh) for secure, compressed transfers.
@@ -29,37 +67,36 @@ Originally developed in the late 1990s, rsync is designed to synchronize files a
 
 Common rsync usage is rsync -avz --bwlimit=1000 source/ user@host:destination/.
 
-Key options:
+Key options :
 
-    -a: Archive mode (recursive, preserve permissions, timestamps, symlinks).
-    -v: Verbose output.
-    -z: Compress data during transfer.
-    --bwlimit=<KB/s>: Throttle bandwidth to avoid saturating the network.
-    -P: Show progress and allow resumption of interrupted transfers.
+      -a: Archive mode (recursive, preserve permissions, timestamps, symlinks).
+      -v: Verbose output.
+      -z: Compress data during transfer.
+      --bwlimit=<KB/s>: Throttle bandwidth to avoid saturating the network.
+      -P: Show progress and allow resumption of interrupted transfers.
 
 Together, SSH and rsync form a robust platform for secure, automated file distribution, backups, and remote administration.
 Objective : 
 
-To configure and verify password-less SSH between alice and bob, securely transfer a file with scp, and synchronize a directory with rsync. This lab teaches RSA key generation, public-key deployment, automated (password-less) remote operations, and verification of transferred/synchronized data — essential tasks for secure remote administration.
+To configure and verify password-less SSH between alice and bob, securely transfer a file with scp, and synchronize a directory with rsync. This lab teaches RSA key generation, public-key deployment, automated (password-less) remote operations, and verification of transferred/synchronized data essential tasks for secure remote administration.
 Tasks :
 
-TASK 1 : Key Generation: As `alice`, generate a RSA key pair without a passphrase.
+    TASK 1 : Key Generation: As `alice`, generate a RSA key pair without a passphrase.
+    TASK 2 : Key Deployment: Copy the public key to `bob` on `localhost`.
+    TASK 3 : File Transfer (SCP): Transfer `shared.txt` present in /home/alice/ to `bob@localhost:/home/bob/` without a password.
+    TASK 4 : Directory Synchronization (rsync): Recursively sync `big_folder/` present in /home/alice/ to `bob@localhost:/home/bob/big_folder` with verbose output.
 
-TASK 2 : Key Deployment: Copy the public key to `bob` on `localhost`.
+Submission :
 
-TASK 3 : File Transfer (SCP): Transfer `shared.txt` present in /home/alice/ to `bob@localhost:/home/bob/` without a password.
+      A file exists at `/home/labDirectory/submissions.txt` containing :
+      For Task 1 and 2 : Perform steps manually (no entries needed).
+      For Task 3 and 4 : Remove the `<command>` placeholder and replace it with the exact `scp` (task3) and `rsync` (task4) commands you used.
+      Do not modify any other text or formatting.
+      Save `/home/labDirectory/submissions.txt` this is your sole submission.
 
-TASK 4 : Directory Synchronization (rsync): Recursively sync `big_folder/` present in /home/alice/ to `bob@localhost:/home/bob/big_folder` with verbose output.
-Submission Template :
+**Important:**
 
-    A file exists at `/home/labDirectory/submissions.txt` containing :
-    For Task 1 and 2 : Perform steps manually (no entries needed).
-    For Task 3 and 4 : Remove the `<command>` placeholder and replace it with the exact `scp` (task3) and `rsync` (task4) commands you used.
-    Do not modify any other text or formatting.
-    Save `/home/labDirectory/submissions.txt` this is your sole submission.
-
-**Important:** :
-
+    Bob's password :bob@123
     Ensure password-less SSH is fully functional before running `scp` or `rsync`.
     Do not use sudo operate under `alice`s permissions.
     For `rsync`, include the trailing slash on `big_folder/` to copy contents.
